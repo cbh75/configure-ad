@@ -30,11 +30,19 @@ Go to the Azure portal (https://portal.azure.com) and ensure you are signed into
 
 Once on the resource groups page, click **Create**. This will take you to a new page where you can enter a name for your new resource group. In this guide, we will call it "active-directory". Then click **Review + create** at the bottom-left corner of the page. Once you see "Validation passed", click **Create**.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/0fd92c52-6eb1-4226-8905-cf116f13f975)
+
+<br />
 
 After the resource group has been created, navigate to your virtual machines. An easy way to do this is to type in "virtual machines" in the search bar.
 
+<br />
+
 ![1](https://github.com/cbh75/osticket-prereqs/assets/62080815/1c9898b8-14cf-42ff-8322-9586a87f2ba5)
+
+<br />
 
 After clicking on **Virtual Machines** in the search bar, you will be taken to your Virtual Machines page listing all of your VMs. In this guide, we want to create two virtual machines. One will be our domain controller, and the other will be a client. You probably won't have any right now, so let's create our first one by clicking on **Create** in the top left corner. This will produce a drop-down box with the different types of VMs you can create. For this tutorial, we will use the first option, **Azure virtual machine**.
 
