@@ -204,111 +204,216 @@ Once our client machine has restarted, log in to it by opening another instance 
 
 Back in **dc-1**, open Server Manager if not already opened by using the search bar. In Server Manager, click **Manage** at the top-right of the window, then click **Add Roles and Features**.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/2bd947a7-05fb-431b-97ea-2fb3355f0432)
+
+<br />
 
 In the pop-up window, click **Next** until you get to **Server Roles**, then click the check box next to **Active Directory Domain Services**. Another pop-up window will appear, click on **Add Features**. Then, back in the first window, click **Next** until you get to the **Confirmation** tab, then click **Install**. this may take a while, so give Windows a couple of minutes to install Active Directory. Once Finished, click **Close**. Now that Active Directory is installed, we have to configure it. To do this, click the flag icon in the top right of Server Manager. It should have a yellow triangle next to it indicating configuration is required. In the menu click **Promote this server to a domain controller**.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/06194fca-f61a-4cf8-ac9d-694c8d8a2c98)
+
+<br />
 
 In the pop-up window, click the bubble next to **Add a new forest**, then specify the root domain name. In this example, we will use "mydomain.com". Once specified, click **Next**.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/5fa70250-ee46-4947-893e-aeb9eae0723c)
+
+<br />
 
 On the next screen, we have to specify a DSRM password. We shouldn't have to use this in this example, but just in case, go ahead and set it to a password you will remember, then click **Next** until you get to the Prerequisites check, then click **Install**. This will take some time!
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/1c05fd79-fae8-43bf-9fe7-70158cdde624)
 
+<br />
+
 Once finished, the virtual machine will restart automatically.
+
+<br />
 
 <h2>Creating a Domain Admin</h2>
 
 If you try to log back in, you will notice we can't anymore. This is because we promoted our dc-1 machine to be an actual domain controller now, so when logging in we now have to specify the domain we set up when configuring Active Directory.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/34261af7-a65f-4498-b409-bcf8a2188cc7)
+
+<br />
 
 Now that we have logged back in to dc-1, we will set up a Domain Admin user. Go ahead and close the Server Manager, as we do not need that right now. Using the search bar, open **Active Directory Users and Computers**.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/0f17fd9e-5360-4e6e-ac4b-6ee3126984f0)
+
+<br />
 
 Once in Active Directory Users and Computers (ADUC), right-click the domain. Go to **New**, then click on **Organizational Unit**.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/09919293-b5fe-497b-a8ba-aac957503a77)
+
+<br />
 
 In the pop-up window, name the organizational unit "_EMPLOYEES". Make sure to type it exactly like that, as we will be running a script later that depends on this.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/a98b81b6-5d0f-4705-ac71-f3b47ed50f46)
+
+<br />
 
 Once finished, create another organizational unit and call it "_ADMINS". When finished, right click the domain again and click **Refresh**. After it refreshes, the two new organizational units we created should be at the top of the list.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/6c2ac1c5-7daf-4737-a2c9-7500e5c19d7f)
+
+<br />
 
 Click on **_EMPLOYEES**, and then right-click in the right side window, go to **New**, then click **User**.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/2e612858-f923-415c-b681-bd0c7ef5a019)
+
+<br />
 
 Here, we can create a new user. Let's call this one Jane Doe, and since she will be an admin, we can make her logon name "jane.admin". Once filled out, click **Next**.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/b0483f51-305e-43b6-918b-33f3adfadea4)
+
+<br />
 
 On the next screen we must set a password for Jane. Make sure to pick one you will remember! For this example, go ahead and uncheck the box next to **User must change password at next logon**.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/5c62f579-2539-40d3-9d91-a7367d5f043f)
+
+<br />
 
 Once a password is specified, click **Next**, then **Finish**. Once we return to our "_EMPLOYEES" organizational unit, we can see on the right that our new Jane Doe user has been added to the list.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/19008e47-d169-477f-a9cb-75d4b5855a4a)
+
+<br />
 
 However, Jane isn't an admin yet. To set this, double click on Jane Doe so her properties window pops up. Click on the **Member Of** tab at the top, then click **Add**.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/6788d98d-f249-4df7-865e-6eda307ff4eb)
+
+<br />
 
 In the pop-up window, click on the object names box and type in "domain admins", then click on **Check Names**.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/c8531ab4-f1e8-4954-be8e-9bf1f86ff172)
+
+<br />
 
 Once **Check Names** is clicked, notice that "Domain Admins" became capitalized and underlined. This is because Windows recognized the security group that we specified and auto assigned it to Jane Doe.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/8af9a14e-659d-4ce3-99fc-6852242ce464)
+
+<br />
 
 Next, Click **OK**. Once returned to the properties window, click **Apply** then **OK**. Now, we can sign out of dc-1 as the user we specified upon creation of the virtual machine and instead log in as Jane Doe. After signing out, Remote Desktop Connection will close. Open a new window, and log in to dc-1 using Jane Doe's user name, making sure to specify the domain we set when configuring Active Directory.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/ad7d560d-abe0-4b81-a14b-ad49c36aeab0)
 
+<br />
+
 Enter the password you used when creating Jane Doe's user, and then connect. Upon logging in, notice that Jane Doe is now seen when logging in instead of the user we created when setting up dc-1. This will be the admin account used for dc-1 from now on.
+
+<br />
 
 <h2>Joining the Client to the Domain</h2>
 
 Next, minimize dc-1 and reconnect to client-1 using the user we created when setting up client-1. Once on client-1's desktop, right-click the start menu, then click **System**.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/15787a65-54e1-43b1-9bd2-44d9140c9004)
+
+<br />
 
 Once on the About page, click on **Rename this PC (advanced)**.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/48891145-92b3-4523-ab65-3654480a32d8)
+
+<br />
 
 Once System Properties opens, click **Change**.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/b4f8e823-63ed-4b79-98d5-9cfbaa299b0b)
+
+<br />
 
 In the pop-up window, under **Member of**, click the **Domain** bubble, then type "mydomain.com" into the domain text box.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/093085f9-312d-4d57-9be2-134c9fd9757d)
+
+<br />
 
 Click **OK**. Another box should pop up asking for a name and password of an account that has permission to join the domain. If an error pops up, double check that client-1's DNS server is set to dc-1's private IP address. We can use Jane Doe to help us join the domain.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/b96ca872-0c79-4dd7-acf9-f7ecc8f1a113)
+
+<br />
 
 Click **OK**. A small window welcoming us to the domain should pop up, indicating we have succesfully joined the domain.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/042cc32b-742e-4c37-bbf5-0891c18c3555)
+
+<br />
 
 Click **OK**, then client-1 will restart to apply the changes. Back in dc-1, open **Active Directory Users and Computers** once again. Under **mydomain.com**, click on **Computers** and verify that client-1 has joined the domain.
 
+<br />
+
 ![image](https://github.com/user-attachments/assets/0618d23c-68c7-4d10-9c5c-d4a29f593ace)
 
+<br />
+
 Now that we see client-1, create a new organizational unit under **mydomain.com** and call it "_CLIENTS". Once created, refresh **mydomain.com** to bring "_CLIENTS" up with the other organizational units we created. Once it has refreshed, drag client-1 from **Computers** into **_CLIENTS**. If a pop-up appears, click **Yes**.
+
+<br />
 
 ![image](https://github.com/user-attachments/assets/3a3ca497-bd3f-4776-b32e-1bc323230c53)
 ![image](https://github.com/user-attachments/assets/3227628e-b102-4102-8491-51cdc637d816)
 
+<br />
+
 <h2>Setting Up Remote Desktop for Non-Administrators</h2>
+
