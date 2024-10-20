@@ -425,3 +425,96 @@ Now that we see client-1, create a new organizational unit under **mydomain.com*
 
 <h2>Setting Up Remote Desktop for Non-Administrators</h2>
 
+Open a new Remote Desktop Connection window and log in to client-1 using Jane Doe's account. Make sure to specify the domain, or the login will fail. Once the desktop appears, right-click the Start button and click **System**.
+
+<br />
+
+![image](https://github.com/user-attachments/assets/3671265c-d511-44e4-8f55-6653b0270bbd)
+
+<br />
+
+Once the About page appears, click on **Remote desktop** on the right side of the page. On the next screen, click on **Select users that can remotely access this PC**.
+
+<br />
+
+![image](https://github.com/user-attachments/assets/d7e7674d-4daa-446b-96e3-f7b160884aed)
+![image](https://github.com/user-attachments/assets/7811f47a-893e-4ea6-8e9e-03e2e944f1c3)
+
+<br />
+
+In the pop-up window, click **Add...**, then in the new pop-up window, in the object names box, type in "domain users".
+
+<br />
+
+![image](https://github.com/user-attachments/assets/754cf0ca-b83e-48fb-84e7-a5b8de95b186)
+![image](https://github.com/user-attachments/assets/634a402a-9658-4561-946b-471686ec6e77)
+
+<br />
+
+Click **Check Names**. Notice that like before, Windows recognizes the user group and automatically corrects it to the recognized group. Click **OK**. Domain Users will be added to the list of uses that can connect to the client. Click **OK** again.
+
+<br />
+
+![image](https://github.com/user-attachments/assets/50d5a5f7-b679-4039-898e-b6eb931935ab)
+
+<br />
+
+<h2>Creating Additional Users</h2>
+
+Log back in to dc-1 as Jane Doe, and use Windows Search to open **PowerShell ISE** as an Administrator.
+
+<br />
+
+![image](https://github.com/user-attachments/assets/a7756037-f0f6-4a4b-ad20-ff55cbdac160)
+
+<br />
+
+Once the User Account Control window pops up, click **Yes**. Once PowerShell ISE opens, click the new script icon at the top to create a new script.
+
+<br />
+
+![image](https://github.com/user-attachments/assets/c40f794e-dbd0-4666-850c-15f023561db5)
+
+<br />
+
+Once a new script is created, a large white text box will appear in the top half of PowerShell ISE. Click into the text box, and paste the contents of [this](https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1) script into the box.
+
+<br />
+
+![image](https://github.com/user-attachments/assets/d9055549-1457-45b5-b627-e64601905bce)
+
+<br />
+
+Click the **Run Script** button to start the script.
+
+<br />
+
+![image](https://github.com/user-attachments/assets/17f46375-f1d5-4315-8ba0-c329c9fe800e)
+
+<br />
+
+PowerShell ISE will start creating a ton of users with randomly generated names. Once a good handful of users are created, click **Stop Operation** to stop generating new users.
+
+<br />
+
+![image](https://github.com/user-attachments/assets/7595c565-19f8-4c2f-ab41-c7f6c7559085)
+
+<br />
+
+Now that we have some users, open **Active Directory Users and Computers** and navigate to **_EMPLOYEES** under the domain. Here we will see all of the users the script created for us.
+
+<br />
+
+![image](https://github.com/user-attachments/assets/b1853fae-54e1-4d8f-8c28-1decdd512471)
+
+<br />
+
+Take any one of these users and log in to client-1 using that account. For this example, "bab.fuva" will be the account used. Open Remote Desktop Connection and type in their username, making sure to specify the domain. The default password specified in the script is Password1, so when prompted enter it into the box.
+
+<br />
+
+![image](https://github.com/user-attachments/assets/121bd007-7e98-47bf-9d8a-601112c7b7c1)
+
+<br />
+
+Once connected, notice that we are logging in as bab.fuva, instead of Jane Doe or the user we specified when creating the virtual machine.
