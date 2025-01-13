@@ -170,7 +170,7 @@ Also, be sure to check the box at the bottom confirming you have an eligible Win
 
 <br />
 
-![image](https://github.com/user-attachments/assets/8d88082e-c691-40e1-bd65-72d0a0701d14)
+![{617E523D-9F97-4C75-8BAE-E7B61DC0FEF1}](https://github.com/user-attachments/assets/a6505ec3-70a3-4e3e-a3bd-f7f1fbcd6de2)
 ![image](https://github.com/user-attachments/assets/117dd128-bf6e-4e7e-a8fd-7ad654453104)
 
 <br />
