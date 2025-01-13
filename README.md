@@ -517,4 +517,4 @@ Take any one of these users and log in to client-1 using that account. For this 
 
 <br />
 
-Once connected, notice that we are logging in as bab.fuva, instead of Jane Doe or the user we specified when creating the virtual machine.
+Once connected, notice that we are logging in as bab.fuva, instead of Jane Doe or the user we specified when creating the virtual machine. And with that, congratulations! You have set up Active Directory Domain Services!
