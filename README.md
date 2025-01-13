@@ -179,7 +179,7 @@ Once that is done, we want to click **Next** until we get to the **Networking** 
 Under **Virtual network**, make sure the same network is used as the one we created for our domain controller, in this case "ad-vnet".
 
 <br />
-s
+
 ![image](https://github.com/user-attachments/assets/682fa8c8-f79c-46aa-91e1-3d80fc9434a9)
 
 <br />
