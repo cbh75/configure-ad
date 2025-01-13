@@ -85,7 +85,7 @@ Once that is done, we can use the remaining default settings, so go ahead and cl
 
 <br />
 
-![image](https://github.com/user-attachments/assets/2df838b1-3520-4e5a-b651-4f97cb010029)
+![{57FC84F0-A591-4E6B-8ED7-77F83AF38F45}](https://github.com/user-attachments/assets/35942682-18ef-44c6-82f1-2378cc5afdbd)
 
 <br />
 
